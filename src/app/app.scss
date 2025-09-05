@@ -1,0 +1,108 @@
+.sidebar {
+  position: relative;
+  overflow: hidden;
+  width: 240px;
+  transition: width 250ms ease;
+}
+.sidebar.collapsed { width: 68px; }
+.sidebar-nav { position: relative; }
+.sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
+
+.nav-pill {
+  position: absolute;
+  left: 6px;
+  border-left: 4px solid #60a6cc;
+  background: transparent;
+  border-radius: 10px;
+  transition: transform 200ms cubic-bezier(.2,.8,.2,1), height 200ms;
+  pointer-events: none;
+  z-index: 2;
+}
+.sidebar.collapsed .nav-pill {
+  left: 0;
+  right: auto;
+  width: 3px;
+  border-left: none;
+  background: #60a6cc;
+  border-radius: 0 3px 3px 0;
+}
+
+.sidebar-nav li {
+  position: relative;
+  z-index: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 4px 6px;
+  transition: transform 80ms ease, background 120ms ease, color 120ms ease, opacity 120ms ease;
+}
+.sidebar-nav li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px 12px 18px;
+  color: #eaf7ff;
+  text-decoration: none;
+}
+.sidebar-nav li a .material-icons { color: #eaf7ff; }
+.sidebar-nav li:hover { background: rgba(255,255,255,0.08); }
+
+.sidebar-nav li.active a {
+  background: transparent !important;
+  font-weight: 600;
+  color: #60a6cc;
+}
+.sidebar-nav li.active a .material-icons { color: #60a6cc; }
+
+.sidebar.collapsed .nav-text,
+.sidebar.collapsed .nav-section-title { display: none; }
+
+.sidebar.collapsed .sidebar-nav li a {
+  justify-content: flex-start;
+  padding-left: 14px;
+  padding-right: 0;
+  gap: 0;
+}
+.sidebar.collapsed .sidebar-nav li a { opacity: 0.7; }
+.sidebar.collapsed .sidebar-nav li.active a { opacity: 1; }
+
+.sidebar-nav li.pressed { transform: scale(0.98); }
+
+.sidebar-nav li .ripple {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle, rgba(255,255,255,.28) 0%, rgba(255,255,255,0) 60%);
+  transform: translate(-50%, -50%) scale(0); opacity: 0;
+}
+.sidebar-nav li:active .ripple { animation: ripple .5s ease-out; }
+@keyframes ripple { 0%{opacity:.45;transform:translate(-50%,-50%) scale(0)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(12)} }
+
+.main-content { position: relative; overflow: hidden; transition: margin-left 250ms ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-pill, .sidebar-nav li, .main-content, .sidebar {
+    transition: none !important; animation: none !important;
+  }
+}
+
+.request-title-bar{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  margin-bottom:12px;
+}
+.title-actions{ display:flex; align-items:center; gap:12px; }
+
+.collection-selector select{
+  height:36px; padding:0 12px; border-radius:8px;
+  border:1px solid rgba(0,0,0,.12); background:#fff; outline: none;
+}
+
+.btn.small{
+  height:36px; padding:0 12px; border-radius:8px;
+  display:inline-flex; align-items:center; gap:8px; border:1px solid transparent;
+  cursor:pointer;
+}
+.btn.btn-save{
+  background:#1976d2; color:#fff; border-color:rgba(0,0,0,.08);
+}
+.btn.btn-save:hover{ filter:brightness(1.06); }
+.btn.btn-save:active{ transform:translateY(1px); }
+.btn .material-icons{ font-size:20px; line-height:1; }

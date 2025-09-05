@@ -1,0 +1,125 @@
+<div id="page-tests" class="page-content active">
+  <div class="api-tester-container">
+    <div class="request-panel">
+
+      <!-- Barra de título -->
+      <div class="request-title-bar">
+        <span class="request-title">Requisição Sem Título</span>
+
+        <div class="title-actions">
+          <button class="btn btn-history small" type="button">
+            <span class="material-icons">history</span>
+            <span>Histórico</span>
+          </button>
+
+          <button class="btn btn-save small" type="button" (click)="showToast()">
+            <span class="material-icons">save</span>
+            <span>Salvar</span>
+          </button>
+
+          <div class="collection-selector">
+            <select>
+              <option>Selecionar Coleção</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="request-input-bar">
+        <div class="method-selector">
+          <select>
+            <option value="GET" selected>GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+            <option value="DELETE">DELETE</option>
+          </select>
+        </div>
+        <input type="text" class="url-input" placeholder="Digite a URL ou cole o texto">
+        <button class="btn btn-send" type="button">
+          <span class="material-icons">play_arrow</span> Enviar
+        </button>
+      </div>
+
+      <div class="request-options">
+        <div class="tabs">
+          <button class="tab-button active" data-tab-target="#params">Parâmetros</button>
+          <button class="tab-button" data-tab-target="#auth">Autorização</button>
+          <button class="tab-button" data-tab-target="#headers">Cabeçalhos</button>
+          <button class="tab-button" data-tab-target="#body">Corpo</button>
+          <button class="tab-button" data-tab-target="#settings">Configurações</button>
+        </div>
+
+        <div class="tab-content">
+          <div id="params" class="tab-pane active">
+            <div class="params-section">
+              <div class="param-group">
+                <div class="param-header">
+                  <h4>Parâmetros de Consulta</h4>
+                  <button class="btn-add" type="button">
+                    <span class="material-icons">add</span> Adicionar
+                  </button>
+                </div>
+                <div class="param-row">
+                  <input type="text" placeholder="Chave">
+                  <input type="text" placeholder="Valor">
+                  <button class="btn-delete" type="button">
+                    <span class="material-icons">delete</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="param-group">
+                <div class="param-header">
+                  <h4>Variáveis de Caminho</h4>
+                  <button class="btn-add" type="button">
+                    <span class="material-icons">add</span> Adicionar
+                  </button>
+                </div>
+                <div class="param-row">
+                  <input type="text" placeholder="Chave">
+                  <input type="text" placeholder="Valor">
+                  <button class="btn-delete" type="button">
+                    <span class="material-icons">delete</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="auth" class="tab-pane"></div>
+          <div id="headers" class="tab-pane"></div>
+          <div id="body" class="tab-pane"></div>
+          <div id="settings" class="tab-pane"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="response-panel">
+      <h3>Resposta</h3>
+      <div class="empty-response">
+        <div class="empty-response-icon">
+          <span class="material-icons">play_arrow</span>
+        </div>
+        <p>Envie uma solicitação para obter uma resposta</p>
+        <span>A resposta aparecerá aqui</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="page-dashboard" class="page-content"><div class="api-tester-container"></div></div>
+<div id="page-backends" class="page-content"><div class="api-tester-container"></div></div>
+<div id="page-apis" class="page-content"><div class="api-tester-container"></div></div>
+<div id="page-gateways" class="page-content"><div class="api-tester-container"></div></div>
+<div id="page-tags" class="page-content"><div class="api-tester-container"></div></div>
+<div id="page-docs" class="page-content"><div class="api-tester-container"></div></div>
+<div id="page-users" class="page-content"><div class="api-tester-container"></div></div>
+<div id="page-settings" class="page-content"><div class="api-tester-container"></div></div>
+
+<div class="toast"
+     [class.show]="toastVisible"
+     [class.leaving]="toastHiding"
+     role="status" aria-live="polite">
+  <span class="material-icons">check_circle</span>
+  <span>Salvo com sucesso!</span>
+</div>

@@ -1,0 +1,138 @@
+<main class="main">
+  <header class="top-bar">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <div class="top-bar-left">
+      <div class="logo-container">
+        <span class="logo">API Center</span>
+        <span class="subtitle">Centralizador de APIs</span>
+      </div>
+      <div class="page-controls">
+        <button class="btn btn-icon" (click)="toggleSidebar()" [attr.aria-expanded]="!isCollapsed">
+          <span class="material-icons">menu</span>
+        </button>
+        <h2 class="page-title">API TESTES</h2>
+      </div>
+    </div>
+
+    <div class="top-bar-right">
+      <button class="btn btn-icon btn-notifications">
+        <span class="material-icons">notifications</span>
+        <span class="notification-badge">3</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="app-container" id="app-container">
+    <aside class="sidebar" [class.collapsed]="isCollapsed">
+      <nav class="sidebar-nav" #navRoot>
+        <p class="nav-section-title">PRINCIPAL</p>
+
+        <div class="nav-pill"
+             [style.transform]="'translateY(' + pillTop + 'px)'"
+             [style.height.px]="pillHeight"></div>
+
+        <ul>
+          <li #menuItem routerLinkActive="active"
+              (click)="setActive(0)" (mousedown)="onPress(0)" (mouseup)="onRelease(0)" (mouseleave)="onRelease(0)">
+            <a [routerLink]="['/dashboard']" [attr.aria-current]="activeIndex===0 ? 'page' : null">
+              <span class="material-icons">dashboard</span>
+              <span class="nav-text">Dashboard</span>
+              <span class="ripple"></span>
+            </a>
+          </li>
+
+          <li #menuItem routerLinkActive="active"
+              (click)="setActive(1)" (mousedown)="onPress(1)" (mouseup)="onRelease(1)" (mouseleave)="onRelease(1)">
+            <a [routerLink]="['/backend']" [attr.aria-current]="activeIndex===1 ? 'page' : null">
+              <span class="material-icons">dns</span>
+              <span class="nav-text">Backends</span>
+              <span class="ripple"></span>
+            </a>
+          </li>
+
+          <li #menuItem routerLinkActive="active"
+              (click)="setActive(2)" (mousedown)="onPress(2)" (mouseup)="onRelease(2)" (mouseleave)="onRelease(2)">
+            <a [routerLink]="['/apis']" [attr.aria-current]="activeIndex===2 ? 'page' : null">
+              <span class="material-icons">api</span>
+              <span class="nav-text">APIs</span>
+              <span class="ripple"></span>
+            </a>
+          </li>
+
+          <li #menuItem routerLinkActive="active"
+              (click)="setActive(3)" (mousedown)="onPress(3)" (mouseup)="onRelease(3)" (mouseleave)="onRelease(3)">
+            <a [routerLink]="['/gateways']" [attr.aria-current]="activeIndex===3 ? 'page' : null">
+              <span class="material-icons">router</span>
+              <span class="nav-text">Gateways</span>
+              <span class="ripple"></span>
+            </a>
+          </li>
+
+          <li #menuItem routerLinkActive="active"
+              (click)="setActive(4)" (mousedown)="onPress(4)" (mouseup)="onRelease(4)" (mouseleave)="onRelease(4)">
+            <a [routerLink]="['/testes']" [attr.aria-current]="activeIndex===4 ? 'page' : null">
+              <span class="material-icons">science</span>
+              <span class="nav-text">Testes</span>
+              <span class="ripple"></span>
+            </a>
+          </li>
+
+          <li #menuItem routerLinkActive="active"
+              (click)="setActive(5)" (mousedown)="onPress(5)" (mouseup)="onRelease(5)" (mouseleave)="onRelease(5)">
+            <a [routerLink]="['/tags']" [attr.aria-current]="activeIndex===5 ? 'page' : null">
+              <span class="material-icons">sell</span>
+              <span class="nav-text">Tags</span>
+              <span class="ripple"></span>
+            </a>
+          </li>
+
+          <li #menuItem routerLinkActive="active"
+              (click)="setActive(6)" (mousedown)="onPress(6)" (mouseup)="onRelease(6)" (mouseleave)="onRelease(6)">
+            <a [routerLink]="['/documentacao']" [attr.aria-current]="activeIndex===6 ? 'page' : null">
+              <span class="material-icons">description</span>
+              <span class="nav-text">Documentação</span>
+              <span class="ripple"></span>
+            </a>
+          </li>
+        </ul>
+
+        <p class="nav-section-title">GERENCIAMENTO</p>
+        <ul>
+          <li #menuItem routerLinkActive="active"
+              (click)="setActive(7)" (mousedown)="onPress(7)" (mouseup)="onRelease(7)" (mouseleave)="onRelease(7)">
+            <a [routerLink]="['/usuarios']" [attr.aria-current]="activeIndex===7 ? 'page' : null">
+              <span class="material-icons">group</span>
+              <span class="nav-text">Usuários</span>
+              <span class="ripple"></span>
+            </a>
+          </li>
+
+          <li #menuItem routerLinkActive="active"
+              (click)="setActive(8)" (mousedown)="onPress(8)" (mouseup)="onRelease(8)" (mouseleave)="onRelease(8)">
+            <a [routerLink]="['/configuracao']" [attr.aria-current]="activeIndex===8 ? 'page' : null">
+              <span class="material-icons">settings</span>
+              <span class="nav-text">Configurações</span>
+              <span class="ripple"></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="collapse-btn" (click)="toggleSidebar()" [attr.aria-expanded]="!isCollapsed">
+          <span class="material-icons">keyboard_double_arrow_left</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content" [@routeAnimations]="true">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+  <div id="toast-notification" class="toast">
+    <span class="material-icons">check_circle</span>
+    Salvo com sucesso!
+  </div>
+</main>

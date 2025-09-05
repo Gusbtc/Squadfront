@@ -1,0 +1,658 @@
+/* You can add global styles to this file, and also import other style files */
+/* --- Configurações Globais e Variáveis --- */
+:root {
+    --primary-color: #0a7bb3;
+    --background-color: #F7F8FC;
+    --sidebar-bg: #0a7bb3;
+    --main-content-bg: #FFFFFF;
+    --border-color: #EAEBF0;
+    --text-color: #333;
+    --text-color-light: #ffffff;
+    --text-color-dark: #202124;
+    --active-item-bg: #E8F0FE;
+    --active-item-text: #0a7bb3;
+    --get-method-color: #28a745;
+    --font-family: 'Roboto', sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Container Principal --- */
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* --- Barra Lateral (Sidebar) --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.subtitle {
+    font-size: 12px;
+    color: var(--text-color-light);
+    display: block;
+}
+
+.sidebar-nav {
+    flex-grow: 1;
+   
+}
+
+.nav-section-title {
+    font-size: 11px;
+    font-weight: bold;
+    color: var(--text-color-light);
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.2); /* Fundo escuro com 20% de opacidade */
+    margin: 20px 15px 10px 15px; /* Define o espaçamento externo */
+    padding: 5px 10px; /* Define o espaçamento interno */
+    border-radius: 4px; /* Cantos levemente arredondados */
+    display: inline-block; /* Faz o fundo se ajustar ao tamanho do texto */
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Define um espaçamento PEQUENO entre os itens da lista */
+.sidebar-nav li {
+    margin-bottom: 2px;
+}
+
+.sidebar-nav li a {
+    /* A linha "margin-bottom: 15px;" foi REMOVIDA daqui */
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-nav li .material-icons {
+    margin-right: 20px;
+    font-size: 24px;
+}
+
+.sidebar-nav li.active a {
+    background-color: var(--active-item-bg);
+    color: var(--active-item-text);
+    border-left-color: var(--primary-color);
+}
+
+.sidebar-nav li.active .material-icons {
+    color: var(--primary-color);
+}
+
+.sidebar-nav li a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Um hover mais sutil */
+}
+
+.sidebar-footer {
+    padding: 0 20px;
+}
+
+.collapse-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #0a7bb3;
+}
+
+/* --- Conteúdo Principal --- */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+    overflow-y: hidden; /* Adicione/confirme esta linha */
+    overflow-x: hidden; /* Adicione/confirme esta linha */
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #c0d0e0;
+    padding-bottom: 20px;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.page-title {
+    font-size: 23px;
+    font-weight: 550;
+    margin: 0;
+    color: var(--text-color-dark);
+}
+
+.btn {
+    border: 2px solid #c0d0e0;
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.btn:hover {
+    background-color: #f8f9fa;
+}
+
+.btn .material-icons {
+    font-size: 18px;
+}
+
+/* --- Painel do API Tester --- */
+.api-tester-container {
+    background-color: var(--main-content-bg);
+    border: 2px solid #c0d0e0;
+    border-radius: 8px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.request-panel {
+    padding: 20px;
+}
+
+.request-title-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.request-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color-dark);
+}
+
+
+
+.collection-selector {
+    margin-left: auto;
+}
+
+.collection-selector select {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #fff;
+}
+
+.request-input-bar {
+    display: flex;
+    gap: 0;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.method-selector select {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-right: none;
+    border-radius: 6px 0 0 6px;
+    font-weight: bold;
+    color: #f99c1c;
+    background-color: #ffffff;
+    height: 46px;
+}
+
+.url-input {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 0;
+    font-size: 14px;
+    height: 46px;
+    box-sizing: border-box;
+}
+.url-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.btn-send {
+    background-color: #5e81ac;
+    color: white;
+    border: 2px solid #c0d0e0;
+    border-radius: 0 6px 6px 0;
+    padding: 10px 20px;
+    height: 46px;
+}
+.btn-send:hover {
+    background-color: #333;
+}
+.btn-send .material-icons {
+    color: rgb(255, 255, 255);
+}
+
+/* --- Abas de Opções (Tabs) --- */
+.tabs {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #0a7bb3;
+    border-bottom: 2px solid transparent;
+    transition: background-color 0.2s ease; /* Adicione esta linha */
+}
+/* Efeito ao passar o mouse sobre as abas que NÃO estão ativas */
+.tab-button:not(.active):hover {
+    background-color: #f1f3f4; /* Um cinza bem claro e sutil */
+    border-radius: 4px 4px 0 0; /* Arredonda os cantos de cima para parecer uma aba */
+}
+
+.tab-button.active {
+    color: var(--primary-color);
+    font-weight: bold;
+    border-bottom-color: var(--primary-color);
+}
+
+.param-group {
+    margin-bottom: 25px;
+}
+
+.param-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.param-header h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Estilo "Ghost Button" para o botão Adicionar */
+.btn-add {
+    background-color: transparent; /* Fundo transparente */
+    border: 1px solid var(--primary-color); /* Borda na cor principal */
+    color: var(--primary-color); /* Texto na cor principal */
+    
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+
+    /* Alinha o ícone e o texto (caso tenha feito o Passo 1) */
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    /* Animação suave para o efeito de hover */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Efeito ao passar o mouse por cima */
+.btn-add:hover {
+    background-color: var(--primary-color); /* Fundo se preenche com a cor principal */
+    color: white; /* Texto fica branco */
+}
+
+/* Ajuste de tamanho para o ícone 'add' dentro do botão */
+.btn-add .material-icons {
+    font-size: 18px;
+}
+
+.param-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.param-row input {
+    flex-grow: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+ 
+}
+.param-row input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.btn-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--primary-color); /* Usando a variável de cor azul */
+    transition: color 0.2s ease-in-out; /* Adiciona uma transição suave para a cor */
+}
+
+/* Nova regra para o efeito ao passar o mouse */
+.btn-delete:hover {
+    color: #e53935; /* Um tom de vermelho mais forte e agradável */
+}
+
+/* --- Painel de Resposta (Response) --- */
+.response-panel {
+    border-top: 1px solid var(--border-color);
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.response-panel h3 {
+    margin: 0 0 20px 0;
+    font-weight: 500;
+
+}
+
+/* --- ESTILOS FINAIS E CORRIGIDOS PARA A MENSAGEM DE RESPOSTA VAZIA --- */
+
+.empty-response {
+    flex-grow: 1; /* Ocupa o espaço vertical */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Alinha o conjunto de itens na VERTICAL (meio) */
+    align-items: center; /* Alinha o conjunto de itens na HORIZONTAL (centro) */
+}
+
+.empty-response-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #f1f3f4;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.empty-response-icon .material-icons {
+    font-size: 30px;
+    color: #ffffff;
+}
+
+.empty-response p {
+    font-size: 16px;
+    color: var(--text-color-dark); /* Garante a cor escura correta */
+    margin: 0 0 5px 0;
+}
+
+.empty-response span {
+    font-size: 14px;
+    color: #202124; /* Garante a cor escura correta */
+}
+/*--- Estilos para a Sidebar Recolhida (Versão corrigida) ---*/
+#menu-toggle-btn{
+    display: none;
+}
+
+.sidebar, .main-content {
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* Deixa o botão de menu sempre visível */
+#menu-toggle-bnt {
+    display: flex;
+}
+/* --- CSS PARA O NOVO LAYOUT (ADICIONAR NO FINAL DO ARQUIVO) --- */
+
+/* 1. Ajustes no Layout Geral */
+html, body {
+    height: 100%; /* Garante que o corpo ocupe toda a altura */
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Estilos da Nova Barra Superior (COM CORES ATUALIZADAS) */
+.top-bar {
+    height: 60px;
+    width: 100%;
+    /* MUDANÇA AQUI: Fundo alterado para o azul da sidebar */
+    background-color: var(--sidebar-bg); 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Linha divisória sutil para fundo escuro */
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+/* Ajusta as cores do logo e subtítulo para a barra escura */
+.top-bar .logo {
+    /* MUDANÇA AQUI: Cor alterada para branco */
+    color: var(--text-color-light);
+}
+.top-bar .subtitle {
+    /* MUDANÇA AQUI: Cor alterada para branco */
+    color: var(--text-color-light);
+}
+
+/* 3. Ajustes no Container Principal */
+.app-container {
+    flex-grow: 1; /* Faz este container ocupar todo o resto da altura */
+    height: calc(100vh - 60px); /* Altura da tela menos a altura da top-bar */
+    display: flex; /* Mantém o layout de sidebar + main-content */
+}
+
+/* 4. Ajustes Finais na Sidebar */
+.sidebar {
+    height: 100%; /* Ocupa 100% da altura do novo .app-container */
+}
+/* Remove o cabeçalho antigo da sidebar que não existe mais */
+.sidebar-header {
+    display: none;
+
+}
+/* Corrige tamanho e centralização do play dentro do círculo */
+.empty-response-icon {
+  width: 72px;         /* um pouco maior para respirar */
+  height: 72px;
+  display: grid;       /* centra em qualquer caso */
+  place-items: center; 
+  background-color: #0a7bb3;
+  border-radius: 50%;
+}
+
+.empty-response-icon .material-icons {
+  font-size: 48px;     /* maior */
+  line-height: 1;      /* remove “sobra” vertical */
+  display: block;      /* evita deslocamento inline */
+  color: h/
+  fffff;
+  transform: translateX(2x);  /* compensa o “peso” à esquerda do triângulo */
+}
+/* --- Estilos da Notificação "Toast" --- */
+.toast {
+    visibility: hidden; /* Começa escondido */
+    opacity: 0;
+    position: fixed; /* Fica fixo na tela, sobre todo o conteúdo */
+    left: 50%;
+    bottom: 30px;
+    transform: translate(-50%, 20px); /* Começa um pouco para baixo */
+
+    display: flex; /* Para alinhar o ícone e o texto */
+    align-items: center;
+    gap: 10px;
+
+    min-width: 250px;
+    background-color: #28a745; /* Verde para sucesso */
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    padding: 16px;
+    z-index: 10; /* Garante que fique na frente de outros elementos */
+
+    font-size: 16px;
+    transition: opacity 0.3s, transform 0.3s ease-in-out; /* Animação suave */
+}
+
+/* Estilo para quando a notificação estiver visível */
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, 0); /* Sobe para a posição final */
+}
+/* --- AJUSTES PARA O CABEÇALHO UNIFICADO --- */
+
+/* 1. Layout da Barra Superior */
+.top-bar {
+    justify-content: space-between; /* Empurra os filhos para as extremidades */
+    gap: 20px;
+}
+
+.top-bar-left, .top-bar-right, .page-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaçamento padrão entre os itens */
+}
+
+/* 2. Remove o cabeçalho antigo que não existe mais */
+.main-header {
+    display: none;
+}
+
+/* 3. Inverte as cores dos elementos movidos */
+
+/* Título da página */
+.top-bar .page-title {
+    color: var(--text-color-light); /* Texto branco */
+    margin-left: 36px;/* Adiciona um espaço extra à esquerda do título */
+}
+
+/* Botões */
+.top-bar .btn {
+    color: var(--text-color-light); /* Texto branco */
+    background-color: transparent; /* Fundo transparente */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Borda branca semitransparente */
+}
+
+/* Efeito hover para os botões na barra azul */
+.top-bar .btn:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo branco com 10% de opacidade */
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Ícones dentro dos botões */
+.top-bar .btn .material-icons {
+    color: var(--text-color-light);
+}
+/* --- LÓGICA PARA ESCONDER/MOSTRAR SIDEBAR --- */
+
+/* Garante que a transição da sidebar seja suave */
+.sidebar {
+    transition: width 0.3s ease-in-out, padding 0.3s ease-in-out;
+    overflow-x: hidden; /* Impede que o conteúdo vaze durante a animação */
+}
+
+/* Estilo para quando a sidebar estiver escondida */
+#app-container.sidebar-hidden .sidebar {
+    width: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+/* --- Controle de Visibilidade e Animação das Páginas --- */
+
+/* Prepara a área principal para empilhar as telas */
+.main-content {
+    position: relative;
+}
+
+/* Define o estilo e a animação para TODAS as telas */
+.page-content {
+    /* Faz as telas ocuparem o mesmo espaço, uma sobre a outra */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Animação: começa invisível e fora de interação */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+/* Define o estilo para a tela que está ATIVA */
+.page-content.active {
+    /* Animação: fica visível e disponível para interação */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- Estilos para o Botão de Notificação --- */
+
+.btn-notifications {
+    position: relative; /* Necessário para posicionar a badge */
+}
+
+.notification-badge {
+    position: absolute; /* Posiciona a badge sobre o ícone */
+    top: 4px;   /* Distância do topo */
+    right: 4px; /* Distância da direita */
+    
+    background-color: #e53935; /* Cor vermelha para a badge */
+    color: white;
+    
+    width: 16px;
+    height: 16px;
+    border-radius: 50%; /* Deixa a badge redonda */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 10px;
+    font-weight: bold;
+    border: 1px solid var(--sidebar-bg); /* Pequena borda na cor da barra */
+}
